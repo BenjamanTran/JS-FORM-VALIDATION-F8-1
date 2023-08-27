@@ -56,9 +56,15 @@
       form: '#form-1',
       errorSelector: '.form-message',
       rules: [
-        Validator.isFullname('#fullname'),
-        Validator.isEmail('#email'),
-        Validator.minLengthPass('#password', 6)
+        Validator.isRequired('#fullname'),
+        Validator.isFullname('#fullname', 'vui long nhap ten day du cua ban'),
+        Validator.isRequired('#email', 'vui long nhap truong nay'),
+        Validator.isEmail('#email', 'vui long nhap chinh xac email'),
+        Validator.minLengthPass('#password', 6),
+        Validator.isRequired('#password_confirmation', 'vui long nhap truong nay'),
+        Validator.isConfirm('#password_confirmation', function () {
+          return document.querySelector('#form-1 #password').value
+        }, 'mat khau nhap lai khong chinh xac')
       ]
     })
   </script>
